@@ -53,6 +53,45 @@ def read_regdef(filename):
                     if element.strip():
                         regular_elements.append(element.strip())
 
+
+def convert_to_dictionary(elements):
+    # Creamos un diccionario vacío
+    regular_dict = {}
+    
+    # Asignamos 'ws' con un valor de 0
+    regular_dict['ws'] = 0
+    
+    # Iteramos sobre los elementos de la definición regular
+    for element in elements:
+        # Separamos la expresión del retorno
+        parts = element.split('{')
+        
+        # Verificamos si se puede dividir en dos partes
+        if len(parts) > 1:
+            # Eliminamos espacios en blanco y caracteres no deseados
+            expr = parts[0].strip(" '")
+            ret = parts[1].strip(" }")
+            
+            # Agregamos al diccionario
+            regular_dict[expr] = ret
+        else:
+            # Si no se puede dividir, asignamos una cadena vacía como retorno
+            expr = parts[0].strip(" '")
+            ret = ''
+            regular_dict[expr] = ret
+    
+    return regular_dict
+
+
+def regdef(dictionary):
+    keys = list(dictionary.keys())
+
+    # Unir las claves usando '|' como separador
+    regex_pattern = '|'.join(keys)
+
+    return regex_pattern
+
+
 # Llamar a las funciones para leer los datos
 
 archivo = "slr-1.yal"
@@ -66,3 +105,11 @@ print(symbols)
 
 print("Elementos de la definición regular:")
 print(regular_elements)
+
+print("Elementos de la definición regular (convertidos a diccionario):")
+
+regular_dict = convert_to_dictionary(regular_elements)
+print(regular_dict)
+
+print("Deficnición regular:")
+print(regdef(regular_dict))
