@@ -1,4 +1,7 @@
 import re
+from  prepare import *
+from AST import *
+from Automatas import *
 
 # Estructuras de datos para almacenar los elementos del lenguaje
 symbols = {}
@@ -99,17 +102,41 @@ archivo = "slr-1.yal"
 symbols = read_var(archivo)
 read_regdef(archivo)
 
-# Imprimir resultados                   
-print("Símbolos:")
 print(symbols)
 
-print("Elementos de la definición regular:")
-print(regular_elements)
-
-print("Elementos de la definición regular (convertidos a diccionario):")
-
 regular_dict = convert_to_dictionary(regular_elements)
-print(regular_dict)
 
-print("Deficnición regular:")
-print(regdef(regular_dict))
+definicion_regular = regdef(regular_dict)
+
+# Expresión regular de ejemplo
+regex_example = 'letter(letter|digit)*'
+
+symbols_keys = list(symbols.keys())
+
+print('expresiones regulares de los tokens')
+print(symbols_keys)
+
+# Aplicar concatenación explícita
+new_regex_example = implicit_to_explicit(regex_example, symbols_keys)
+
+print(new_regex_example)
+
+# Convertir la expresión regular a postfijo
+postfix= infix_postfix(new_regex_example)
+
+print(postfix)
+
+ast = construir_AST(postfix,symbols_keys)
+calcular_nulabilidad(ast)
+nulables = obtener_nulables(ast)
+obtener_primera_pos(ast)
+obtener_ultima_pos(ast)
+calcular_followpos(ast)
+
+dot = dibujar_AST(ast)
+dot.render('ast', format='png', view=True)
+
+
+
+
+
