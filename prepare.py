@@ -1,10 +1,25 @@
 
+def convert_regex_to_list(regex, symbols_keys):
+    regex_list = []
+    i = 0
+    while i < len(regex):
+        found_key = False
+        for key in symbols_keys:
+            if regex.startswith(key, i):
+                regex_list.append(key)
+                i += len(key)
+                found_key = True
+                break
+        if not found_key:
+            regex_list.append(regex[i])
+            i += 1
+    return regex_list
+
 def convertFirst(expresion):
     return expresion.replace('?', '|E')
 
-def convertir_expresion(expresion):
+def convertir_expresion(lista):
     
-    lista = list(expresion)
     alfabeto = []
     operandos = ['+','.','*','|','(',')','[',']','{','}','?']
 
@@ -49,12 +64,15 @@ def convertir_expresion(expresion):
 
 import re
 
-def implicit_to_explicit(regex: str, symbol_keys: list) -> str:
+def implicit_to_explicit(regex: list, symbol_keys: list) -> str:
+    # Convertir la lista de expresión regular a una cadena
+    regex_str = ''.join(regex)
+
     # Generar patrón de búsqueda para encontrar tokens completos
     pattern = r'\b(?:' + '|'.join(map(re.escape, symbol_keys)) + r')\b'
 
     # Reemplazar tokens por caracteres especiales
-    replaced_regex = re.sub(pattern, lambda match: str(symbol_keys.index(match.group(0))), regex)
+    replaced_regex = re.sub(pattern, lambda match: str(symbol_keys.index(match.group(0))), regex_str)
 
     # Aplicar concatenación explícita
     new_regex = ''
@@ -69,32 +87,34 @@ def implicit_to_explicit(regex: str, symbol_keys: list) -> str:
     for i, token in enumerate(symbol_keys):
         new_regex = new_regex.replace(str(i), token)
 
+    new_regex = convert_regex_to_list(new_regex, symbol_keys)
+
     return new_regex
 
 
 def infix_postfix(infix):
     caracteres_especiales = {'*': 60, '.': 40, '|': 20}
-    exp_postfix, stack = "", ""  
+    exp_postfix, stack = [], []  
 
     for c in infix:        
         if c == '(':
-            stack = stack + c 
+            stack.append(c)
         elif c == ')':
-            while stack[-1] != '(':  
-                exp_postfix = exp_postfix + stack[-1]  
-                stack = stack[:-1]  
-            stack = stack[:-1]  
+            while stack[-1] != '(':
+                exp_postfix.append(stack.pop())
+            stack.pop()
         elif c in caracteres_especiales:
             while stack and caracteres_especiales.get(c, 0) <= caracteres_especiales.get(stack[-1], 0):
-                exp_postfix, stack = exp_postfix + stack[-1], stack[:-1]
-            stack = stack + c
+                exp_postfix.append(stack.pop())
+            stack.append(c)
         else:
-            exp_postfix = exp_postfix + c
+            exp_postfix.append(c)
 
     while stack:
-        exp_postfix, stack = exp_postfix + stack[-1], stack[:-1]
+        exp_postfix.append(stack.pop())
 
     return exp_postfix
+
 
 def verify_regex(expresion):
     pila = []

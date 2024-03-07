@@ -20,22 +20,27 @@ class NodoAST:
         return self.id < other.id
         
 
-def construir_AST(exp_postfix, symbols_keys):
-    pila = []
-    for i in exp_postfix:
-        if i in symbols_keys:
-            nodo = NodoAST(i, None)
-            pila.append(nodo)
-        elif i == '*':
-            nodo = NodoAST(i, None)
-            nodo.izquierda = pila.pop()
-            pila.append(nodo)
-        elif i in ['|', '.']:
-            nodo = NodoAST(i, None)
-            nodo.derecha = pila.pop()
-            nodo.izquierda = pila.pop()
-            pila.append(nodo)
-    return pila.pop()
+def construir_AST(exp_postfix):
+    stack = []
+    exp_postfix.append('#')
+    exp_postfix.append('.')
+    identificador = 1
+    for token in exp_postfix:
+        if token in ['.', '|', '*', '+', '?']:
+            nodo = NodoAST(token, 'null')
+        else:
+            nodo = NodoAST(token, identificador)
+            identificador += 1
+        if token in ['.', '|', '*', '+', '?']:
+            nodo.derecha = stack.pop()
+            if token not in ['*', '+', '?']:
+                nodo.izquierda = stack.pop()
+        stack.append(nodo)
+
+    if len(stack) != 1:
+        raise ValueError("Expresión no válida")
+
+    return stack[0]
 
 
 def dibujar_AST(nodo, dot=None):
@@ -205,8 +210,8 @@ def calcular_followpos(nodo, ast ):
             pos_node.follows |= nodo.PrimeraPos
             pos_node.NodosF |= nodo.NodosPP
 
-    calcular_followpos(nodo.izquierda)
-    calcular_followpos(nodo.derecha)
+    calcular_followpos(nodo.izquierda, ast)
+    calcular_followpos(nodo.derecha, ast)
 
 def obtener_nodo_por_id(nodo, id):
     if nodo is None:
