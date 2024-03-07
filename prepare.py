@@ -1,5 +1,5 @@
 
-def convert_regex_to_list(regex, symbols_keys):
+def convert_regex_to_list(regex, symbols_keys, operandos):
     regex_list = []
     i = 0
     while i < len(regex):
@@ -11,9 +11,17 @@ def convert_regex_to_list(regex, symbols_keys):
                 found_key = True
                 break
         if not found_key:
+            for op in operandos:
+                if regex.startswith(op, i):
+                    regex_list.append(op)
+                    i += len(op)
+                    found_key = True
+                    break
+        if not found_key:
             regex_list.append(regex[i])
             i += 1
     return regex_list
+
 
 def convertFirst(expresion):
     return expresion.replace('?', '|E')
@@ -64,33 +72,29 @@ def convertir_expresion(lista):
 
 import re
 
-def implicit_to_explicit(regex: list, symbol_keys: list) -> str:
+import re
+
+def implicit_to_explicit(regex: list, symbol_keys: list, operandos: list) -> list:
     # Convertir la lista de expresión regular a una cadena
     regex_str = ''.join(regex)
 
-    # Generar patrón de búsqueda para encontrar tokens completos
-    pattern = r'\b(?:' + '|'.join(map(re.escape, symbol_keys)) + r')\b'
+    # Une lista de símbolos y operandos
+    symbol_keys += operandos
 
-    # Reemplazar tokens por caracteres especiales
-    replaced_regex = re.sub(pattern, lambda match: str(symbol_keys.index(match.group(0))), regex_str)
-
+    
     # Aplicar concatenación explícita
-    new_regex = ''
-    for i in range(len(replaced_regex) - 1):
-        if replaced_regex[i] not in ['(', '|', '.','{','['] and replaced_regex[i + 1] not in [')', '|', '*', '.',']','}']:
-            new_regex += replaced_regex[i] + '.'  # Agregar concatenación explícita
+    new_regex_list = []
+    for i in range(len(regex) - 1):
+        if regex[i] not in ['(', '|', '.', '{', '['] and regex[i + 1] not in [')', '|', '*', '.', ']', '}']:
+            new_regex_list.append(regex[i])
+            new_regex_list.append('.')
         else:
-            new_regex += replaced_regex[i]  # Agregar el caracter normal
-    new_regex += replaced_regex[-1]  # Agregar el último caracter
+            new_regex_list.append(regex[i])
 
-    # Restaurar estado original de los tokens
-    for i, token in enumerate(symbol_keys):
-        new_regex = new_regex.replace(str(i), token)
+    new_regex_list.append(regex[-1])  # Agregar el último caracter
 
-    new_regex = convert_regex_to_list(new_regex, symbol_keys)
 
-    return new_regex
-
+    return new_regex_list
 
 def infix_postfix(infix):
     caracteres_especiales = {'*': 60, '.': 40, '|': 20}

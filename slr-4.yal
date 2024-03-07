@@ -18,12 +18,12 @@ rule tokens =
   | ';'       { return SEMICOLON }
   | ":="      { return ASSIGNOP }
   | '<'       { return LT }
-  | '='       { return EQ }
-  | '+'       { return PLUS }
-  | '-'       { return MINUS }
-  | '*'       { return TIMES }
-  | '/'       { return DIV }
-  | '('       { return LPAREN }
-  | ')'       { return RPAREN }
+  | 'igual'       { return EQ }
+  | 'suma'       { return PLUS }
+  | 'resta'       { return MINUS }
+  | 'multi'       { return TIMES }
+  | 'div'       { return DIV }
+  | 'lparen'       { return LPAREN }
+  | 'rparen'       { return RPAREN }
 
 (* Introducir cualquier trailer aqui *)
