@@ -20,13 +20,18 @@ class NodoAST:
         return self.id < other.id
         
 
-def construir_AST(exp_postfix):
+def construir_AST(exp_postfix, definitions):
     stack = []
     exp_postfix.append('#')
     exp_postfix.append('.')
     identificador = 1
     for token in exp_postfix:
-        if token in ['.', '|', '*', '+', '?']:
+        if token in definitions:  # Verificar si el token es una definición previa
+            # Expandir la definición
+            nodo_definicion = construir_AST(definitions[token], definitions)
+            nodo = NodoAST('def', 'null')
+            nodo.izquierda = nodo_definicion
+        elif token in ['.', '|', '*', '+', '?']:
             nodo = NodoAST(token, 'null')
         else:
             nodo = NodoAST(token, identificador)
@@ -41,7 +46,6 @@ def construir_AST(exp_postfix):
         raise ValueError("Expresión no válida")
 
     return stack[0]
-
 
 def dibujar_AST(nodo, dot=None):
     if dot is None:
