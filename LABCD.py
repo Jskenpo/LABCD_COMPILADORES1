@@ -27,7 +27,7 @@ operandos = [
 
 # Llamar a las funciones para leer los datos
 
-archivo = "slr-2.yal"
+archivo = "slr-4.yal"
 
 symbols = read_var(archivo)
 read_regdef(archivo)
@@ -74,13 +74,14 @@ print('Simbolos procesados')
 print(processed_symbols)
 
 ast = construir_AST(postfix, processed_symbols)
-
-ast = construir_AST(postfix,processed_symbols)
+ast = ast_final(ast)
 calcular_nulabilidad(ast)
-nulables = obtener_nulables(ast)
+
+
 obtener_primera_pos(ast)
 obtener_ultima_pos(ast)
 calcular_followpos(ast,ast)
+
 
 dot = dibujar_AST(ast)
 dot.render('ast', format='png', view=True)

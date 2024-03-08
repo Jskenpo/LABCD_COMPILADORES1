@@ -2,18 +2,18 @@
 
 (* Introducir cualquier header aqui *)
 
-let delim = [' ''\t''\n']
+let delim = ['\s' '\t' '\n']
 let ws = delim+
-let digit = ["0123456789"]
-let digits = digit+
-let number = digits(.digits)?('E'['+' '-']?digits)?
+let digit = ['0'-'2']
+let dogits = digit+
+let number = dogits(dogits)?(E['+' '-']?dogits)?
 
 rule tokens = 
     ws        { return WHITESPACE }               (* Cambie por una acción válida, que devuelva el token *)
   | number    { return NUMBER }
-  | '+'       { return PLUS }
-  | '*'       { return TIMES }
-  | '('       { return LPAREN }
-  | ')'       { return RPAREN }
+  | 'suma'       { return PLUS }
+  | 'multi'       { return TIMES }
+  | 'lparen'       { return LPAREN }
+  | 'rparen'       { return RPAREN }
 
 (* Introducir cualquier trailer aqui *)

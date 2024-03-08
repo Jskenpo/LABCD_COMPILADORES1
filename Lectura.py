@@ -5,8 +5,6 @@ regular_elements = []
 
 def read_var(filename):
     with open(filename) as f:
-        is_tokens_section = False  # Variable para indicar si estamos en la sección de tokens
-        
         for line in f:
             line = line.strip()
             

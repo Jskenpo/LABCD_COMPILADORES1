@@ -2,21 +2,21 @@
 
 (* Introducir cualquier header aqui *)
 
-let delim = [' ''\t''\n']
+let delim = ['\s' '\t' '\n']
 let ws = delim+
-let letter = ['A'-'Z''a'-'z']
+let letter = ['A'-'B' 'a'-'b']
 let str = (_)*
-let digit = ['0'-'9']
-let digits = digit+  
+let digit = ['0'-'2']
+let dogits = digit+  
 let id = letter(letter|str|digit)*
-let number = digits(.digits)?('E'['+''-']?digits)?
+let number = dogits(dogits)?(E['+' '-']?dogits)?
 
 rule tokens = 
     ws
   | id        { return ID }               (* Cambie por una acción válida, que devuelva el token *)
   | number    { return NUMBER }
   | ';'       { return SEMICOLON }
-  | ":="      { return ASSIGNOP }
+  | ':='      { return ASSIGNOP }
   | '<'       { return LT }
   | 'igual'       { return EQ }
   | 'suma'       { return PLUS }
