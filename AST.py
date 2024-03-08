@@ -22,14 +22,13 @@ class NodoAST:
 
 def construir_AST(exp_postfix, definitions):
     stack = []
-    exp_postfix.append('#')
-    exp_postfix.append('.')
     identificador = 1
     for token in exp_postfix:
         if token in definitions:  # Verificar si el token es una definición previa
             # Expandir la definición
             nodo_definicion = construir_AST(definitions[token], definitions)
-            nodo = NodoAST('def', 'null')
+            # Usar la definición como etiqueta del nodo
+            nodo = NodoAST(token, 'null')
             nodo.izquierda = nodo_definicion
         elif token in ['.', '|', '*', '+', '?']:
             nodo = NodoAST(token, 'null')
@@ -46,6 +45,7 @@ def construir_AST(exp_postfix, definitions):
         raise ValueError("Expresión no válida")
 
     return stack[0]
+
 
 def dibujar_AST(nodo, dot=None):
     if dot is None:
@@ -231,3 +231,22 @@ def obtener_nodo_por_id(nodo, id):
     nodo_derecha = obtener_nodo_por_id(nodo.derecha, id)
     if nodo_derecha is not None:
         return nodo_derecha
+
+
+def agregar_concatenacion(raiz):
+    if raiz is None:
+        return None
+    
+    # Verificar si la raíz ya es el nodo de concatenación de #
+    if raiz.valor == '.' and raiz.derecha.valor == '#' and raiz.izquierda is not None:
+        return raiz
+    
+    # Si la raíz no tiene hijos, crear un nuevo nodo con #
+    if raiz.izquierda is None and raiz.derecha is None:
+        return NodoAST('.', 'null', raiz, NodoAST('#', 'null'))
+
+    # Recorrer recursivamente los hijos para agregar la concatenación de #
+    raiz.izquierda = agregar_concatenacion(raiz.izquierda)
+    raiz.derecha = agregar_concatenacion(raiz.derecha)
+
+    return raiz

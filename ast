@@ -1,104 +1,904 @@
 digraph {
-	1485588019088 [label=".
+	2950291241616 [label="|
 Nulable:False 
 ID: null
-PP: {1, 2, 3, 4, 5, 6}
-UP: {7}
- FP: set()"]
-	1485588018960 [label="|"]
-	1485588019088 -> 1485588018960
-	1485588018960 [label="|
+PP: {1, 2, 3, 4, 5, 6, 'null'}
+UP: {1, 2, 3, 4, 5, 6, 'null'}
+ FP: {1, 2, 3, 4, 'null'}"]
+	2950291241488 [label="|"]
+	2950291241616 -> 2950291241488
+	2950291241488 [label="|
 Nulable:False 
 ID: null
-PP: {1, 2, 3, 4, 5, 6}
-UP: {1, 2, 3, 4, 5, 6}
+PP: {1, 2, 3, 4, 5, 'null'}
+UP: {1, 2, 3, 4, 5, 'null'}
  FP: set()"]
-	1485588018832 [label="|"]
-	1485588018960 -> 1485588018832
-	1485588018832 [label="|
+	2950291241360 [label="|"]
+	2950291241488 -> 2950291241360
+	2950291241360 [label="|
 Nulable:False 
 ID: null
-PP: {1, 2, 3, 4, 5}
-UP: {1, 2, 3, 4, 5}
+PP: {1, 2, 3, 4, 'null'}
+UP: {1, 2, 3, 4, 'null'}
  FP: set()"]
-	1485588018704 [label="|"]
-	1485588018832 -> 1485588018704
-	1485588018704 [label="|
+	2950291241232 [label="|"]
+	2950291241360 -> 2950291241232
+	2950291241232 [label="|
 Nulable:False 
 ID: null
-PP: {1, 2, 3, 4}
-UP: {1, 2, 3, 4}
+PP: {1, 2, 3, 'null'}
+UP: {1, 2, 3, 4, 'null'}
  FP: set()"]
-	1485588018576 [label="|"]
-	1485588018704 -> 1485588018576
-	1485588018576 [label="|
+	2950291241104 [label="|"]
+	2950291241232 -> 2950291241104
+	2950291241104 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3, 'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291240976 [label="|"]
+	2950291241104 -> 2950291240976
+	2950291240976 [label="|
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291240848 [label="|"]
+	2950291240976 -> 2950291240848
+	2950291240848 [label="|
+Nulable:False 
+ID: null
+PP: {3, 2, 'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291237072 [label="|"]
+	2950291240848 -> 2950291237072
+	2950291237072 [label="|
+Nulable:False 
+ID: null
+PP: {'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291235344 [label=ws]
+	2950291237072 -> 2950291235344
+	2950291235344 [label="ws
+Nulable:False 
+ID: null
+PP: {'null'}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291235280 [label="."]
+	2950291235344 -> 2950291235280
+	2950291235280 [label=".
+Nulable:False 
+ID: null
+PP: set()
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291234768 [label=delim]
+	2950291235280 -> 2950291234768
+	2950291234768 [label="delim
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291234704 [label="|"]
+	2950291234768 -> 2950291234704
+	2950291234704 [label="|
 Nulable:False 
 ID: null
 PP: {1, 2, 3}
 UP: {1, 2, 3}
  FP: set()"]
-	1485588018384 [label="|"]
-	1485588018576 -> 1485588018384
-	1485588018384 [label="|
+	2950291234576 [label="|"]
+	2950291234704 -> 2950291234576
+	2950291234576 [label="|
 Nulable:False 
 ID: null
 PP: {1, 2}
 UP: {1, 2}
  FP: set()"]
-	1485588018320 [label=ws]
-	1485588018384 -> 1485588018320
-	1485588018320 [label="ws
+	2950291234448 [label=Espacio]
+	2950291234576 -> 2950291234448
+	2950291234448 [label="Espacio
 Nulable:False 
 ID: 1
 PP: {1}
 UP: {1}
- FP: {7}"]
-	1485588018448 [label=id]
-	1485588018384 -> 1485588018448
-	1485588018448 [label="id
+ FP: {1, 2, 3, 4, 'null'}"]
+	2950291234512 [label=Tab]
+	2950291234576 -> 2950291234512
+	2950291234512 [label="Tab
 Nulable:False 
 ID: 2
 PP: {2}
 UP: {2}
- FP: {7}"]
-	1485588018512 [label=suma]
-	1485588018576 -> 1485588018512
-	1485588018512 [label="suma
+ FP: {1, 2, 3, 4, 'null'}"]
+	2950291234640 [label=Enter]
+	2950291234704 -> 2950291234640
+	2950291234640 [label="Enter
 Nulable:False 
 ID: 3
 PP: {3}
 UP: {3}
- FP: {7}"]
-	1485588018640 [label=multi]
-	1485588018704 -> 1485588018640
-	1485588018640 [label="multi
+ FP: {1, 2, 3, 4, 'null'}"]
+	2950291235216 [label="*"]
+	2950291235280 -> 2950291235216
+	2950291235216 [label="*
+Nulable:True 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291235152 [label=delim]
+	2950291235216 -> 2950291235152
+	2950291235152 [label="delim
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291235088 [label="|"]
+	2950291235152 -> 2950291235088
+	2950291235088 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291234960 [label="|"]
+	2950291235088 -> 2950291234960
+	2950291234960 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291234832 [label=Espacio]
+	2950291234960 -> 2950291234832
+	2950291234832 [label="Espacio
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291234896 [label=Tab]
+	2950291234960 -> 2950291234896
+	2950291234896 [label="Tab
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291235024 [label=Enter]
+	2950291235088 -> 2950291235024
+	2950291235024 [label="Enter
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291237008 [label=id]
+	2950291237072 -> 2950291237008
+	2950291237008 [label="id
+Nulable:False 
+ID: null
+PP: {'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291236944 [label="."]
+	2950291237008 -> 2950291236944
+	2950291236944 [label=".
+Nulable:False 
+ID: null
+PP: set()
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291235856 [label=letter]
+	2950291236944 -> 2950291235856
+	2950291235856 [label="letter
+Nulable:False 
+ID: null
+PP: {1, 2, 3, 4, 'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291235792 [label="|"]
+	2950291235856 -> 2950291235792
+	2950291235792 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3, 4}
+UP: {1, 2, 3, 4}
+ FP: set()"]
+	2950291235664 [label="|"]
+	2950291235792 -> 2950291235664
+	2950291235664 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291235536 [label="|"]
+	2950291235664 -> 2950291235536
+	2950291235536 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291235408 [label=A]
+	2950291235536 -> 2950291235408
+	2950291235408 [label="A
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291235472 [label=B]
+	2950291235536 -> 2950291235472
+	2950291235472 [label="B
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291235600 [label=a]
+	2950291235664 -> 2950291235600
+	2950291235600 [label="a
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291235728 [label=b]
+	2950291235792 -> 2950291235728
+	2950291235728 [label="b
 Nulable:False 
 ID: 4
 PP: {4}
 UP: {4}
- FP: {7}"]
-	1485588018768 [label=lparen]
-	1485588018832 -> 1485588018768
-	1485588018768 [label="lparen
+ FP: {1, 2, 3, 4, 'null'}"]
+	2950291236880 [label="*"]
+	2950291236944 -> 2950291236880
+	2950291236880 [label="*
+Nulable:True 
+ID: null
+PP: {1, 2, 3, 4, 'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291236816 [label="|"]
+	2950291236880 -> 2950291236816
+	2950291236816 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3, 4, 'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291236368 [label=letter]
+	2950291236816 -> 2950291236368
+	2950291236368 [label="letter
+Nulable:False 
+ID: null
+PP: {1, 2, 3, 4, 'null'}
+UP: {1, 2, 3, 4, 'null'}
+ FP: set()"]
+	2950291236304 [label="|"]
+	2950291236368 -> 2950291236304
+	2950291236304 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3, 4}
+UP: {1, 2, 3, 4}
+ FP: set()"]
+	2950291236176 [label="|"]
+	2950291236304 -> 2950291236176
+	2950291236176 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291236048 [label="|"]
+	2950291236176 -> 2950291236048
+	2950291236048 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291235920 [label=A]
+	2950291236048 -> 2950291235920
+	2950291235920 [label="A
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291235984 [label=B]
+	2950291236048 -> 2950291235984
+	2950291235984 [label="B
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291236112 [label=a]
+	2950291236176 -> 2950291236112
+	2950291236112 [label="a
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291236240 [label=b]
+	2950291236304 -> 2950291236240
+	2950291236240 [label="b
+Nulable:False 
+ID: 4
+PP: {4}
+UP: {4}
+ FP: set()"]
+	2950291236752 [label=digit]
+	2950291236816 -> 2950291236752
+	2950291236752 [label="digit
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291236688 [label="|"]
+	2950291236752 -> 2950291236688
+	2950291236688 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291236560 [label="|"]
+	2950291236688 -> 2950291236560
+	2950291236560 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291236432 [label=0]
+	2950291236560 -> 2950291236432
+	2950291236432 [label="0
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291236496 [label=1]
+	2950291236560 -> 2950291236496
+	2950291236496 [label="1
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291236624 [label=2]
+	2950291236688 -> 2950291236624
+	2950291236624 [label="2
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291240784 [label=number]
+	2950291240848 -> 2950291240784
+	2950291240784 [label="number
+Nulable:False 
+ID: null
+PP: {3, 2, 'null'}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291240720 [label="|"]
+	2950291240784 -> 2950291240720
+	2950291240720 [label="|
+Nulable:True 
+ID: null
+PP: {'null', 2, 3}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291240592 [label="|"]
+	2950291240720 -> 2950291240592
+	2950291240592 [label="|
+Nulable:False 
+ID: null
+PP: {'null', 2, 3}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291239056 [label="."]
+	2950291240592 -> 2950291239056
+	2950291239056 [label=".
+Nulable:False 
+ID: null
+PP: set()
+UP: set()
+ FP: set()"]
+	2950291238032 [label=dogits]
+	2950291239056 -> 2950291238032
+	2950291238032 [label="dogits
+Nulable:False 
+ID: null
+PP: {'null'}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291237968 [label="."]
+	2950291238032 -> 2950291237968
+	2950291237968 [label=".
+Nulable:False 
+ID: null
+PP: set()
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291237456 [label=digit]
+	2950291237968 -> 2950291237456
+	2950291237456 [label="digit
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291237392 [label="|"]
+	2950291237456 -> 2950291237392
+	2950291237392 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291237264 [label="|"]
+	2950291237392 -> 2950291237264
+	2950291237264 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291237136 [label=0]
+	2950291237264 -> 2950291237136
+	2950291237136 [label="0
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291237200 [label=1]
+	2950291237264 -> 2950291237200
+	2950291237200 [label="1
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291237328 [label=2]
+	2950291237392 -> 2950291237328
+	2950291237328 [label="2
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291237904 [label="*"]
+	2950291237968 -> 2950291237904
+	2950291237904 [label="*
+Nulable:True 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291237840 [label=digit]
+	2950291237904 -> 2950291237840
+	2950291237840 [label="digit
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291237776 [label="|"]
+	2950291237840 -> 2950291237776
+	2950291237776 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291237648 [label="|"]
+	2950291237776 -> 2950291237648
+	2950291237648 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291237520 [label=0]
+	2950291237648 -> 2950291237520
+	2950291237520 [label="0
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291237584 [label=1]
+	2950291237648 -> 2950291237584
+	2950291237584 [label="1
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291237712 [label=2]
+	2950291237776 -> 2950291237712
+	2950291237712 [label="2
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291238992 [label=dogits]
+	2950291239056 -> 2950291238992
+	2950291238992 [label="dogits
+Nulable:False 
+ID: null
+PP: {'null'}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291238928 [label="."]
+	2950291238992 -> 2950291238928
+	2950291238928 [label=".
+Nulable:False 
+ID: null
+PP: set()
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291238416 [label=digit]
+	2950291238928 -> 2950291238416
+	2950291238416 [label="digit
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291238352 [label="|"]
+	2950291238416 -> 2950291238352
+	2950291238352 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291238224 [label="|"]
+	2950291238352 -> 2950291238224
+	2950291238224 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291238096 [label=0]
+	2950291238224 -> 2950291238096
+	2950291238096 [label="0
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291238160 [label=1]
+	2950291238224 -> 2950291238160
+	2950291238160 [label="1
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291238288 [label=2]
+	2950291238352 -> 2950291238288
+	2950291238288 [label="2
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291238864 [label="*"]
+	2950291238928 -> 2950291238864
+	2950291238864 [label="*
+Nulable:True 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291238800 [label=digit]
+	2950291238864 -> 2950291238800
+	2950291238800 [label="digit
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291238736 [label="|"]
+	2950291238800 -> 2950291238736
+	2950291238736 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291238608 [label="|"]
+	2950291238736 -> 2950291238608
+	2950291238608 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291238480 [label=0]
+	2950291238608 -> 2950291238480
+	2950291238480 [label="0
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291238544 [label=1]
+	2950291238608 -> 2950291238544
+	2950291238544 [label="1
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291238672 [label=2]
+	2950291238736 -> 2950291238672
+	2950291238672 [label="2
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291240528 [label="."]
+	2950291240592 -> 2950291240528
+	2950291240528 [label=".
+Nulable:False 
+ID: null
+PP: {'null', 2, 3}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291239120 [label=E]
+	2950291240528 -> 2950291239120
+	2950291239120 [label="E
+Nulable:True 
+ID: 1
+PP: set()
+UP: set()
+ FP: set()"]
+	2950291240464 [label="|"]
+	2950291240528 -> 2950291240464
+	2950291240464 [label="|
+Nulable:False 
+ID: null
+PP: {'null', 2, 3}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291239312 [label="|"]
+	2950291240464 -> 2950291239312
+	2950291239312 [label="|
+Nulable:False 
+ID: null
+PP: {2, 3}
+UP: {2, 3}
+ FP: set()"]
+	2950291239184 [label=suma]
+	2950291239312 -> 2950291239184
+	2950291239184 [label="suma
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291239248 [label=resta]
+	2950291239312 -> 2950291239248
+	2950291239248 [label="resta
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291240400 [label="."]
+	2950291240464 -> 2950291240400
+	2950291240400 [label=".
+Nulable:False 
+ID: null
+PP: {'null'}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291239376 [label=E]
+	2950291240400 -> 2950291239376
+	2950291239376 [label="E
+Nulable:True 
+ID: 4
+PP: set()
+UP: set()
+ FP: set()"]
+	2950291240336 [label=dogits]
+	2950291240400 -> 2950291240336
+	2950291240336 [label="dogits
+Nulable:False 
+ID: null
+PP: {'null'}
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291240272 [label="."]
+	2950291240336 -> 2950291240272
+	2950291240272 [label=".
+Nulable:False 
+ID: null
+PP: set()
+UP: {1, 2, 3, 'null'}
+ FP: set()"]
+	2950291239760 [label=digit]
+	2950291240272 -> 2950291239760
+	2950291239760 [label="digit
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291239696 [label="|"]
+	2950291239760 -> 2950291239696
+	2950291239696 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291239568 [label="|"]
+	2950291239696 -> 2950291239568
+	2950291239568 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291239440 [label=0]
+	2950291239568 -> 2950291239440
+	2950291239440 [label="0
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291239504 [label=1]
+	2950291239568 -> 2950291239504
+	2950291239504 [label="1
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291239632 [label=2]
+	2950291239696 -> 2950291239632
+	2950291239632 [label="2
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291240208 [label="*"]
+	2950291240272 -> 2950291240208
+	2950291240208 [label="*
+Nulable:True 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291240144 [label=digit]
+	2950291240208 -> 2950291240144
+	2950291240144 [label="digit
+Nulable:False 
+ID: null
+PP: {3, 1, 2, 'null'}
+UP: {3, 1, 2, 'null'}
+ FP: set()"]
+	2950291240080 [label="|"]
+	2950291240144 -> 2950291240080
+	2950291240080 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2, 3}
+UP: {1, 2, 3}
+ FP: set()"]
+	2950291239952 [label="|"]
+	2950291240080 -> 2950291239952
+	2950291239952 [label="|
+Nulable:False 
+ID: null
+PP: {1, 2}
+UP: {1, 2}
+ FP: set()"]
+	2950291239824 [label=0]
+	2950291239952 -> 2950291239824
+	2950291239824 [label="0
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291239888 [label=1]
+	2950291239952 -> 2950291239888
+	2950291239888 [label="1
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291240016 [label=2]
+	2950291240080 -> 2950291240016
+	2950291240016 [label="2
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291240656 [label=E]
+	2950291240720 -> 2950291240656
+	2950291240656 [label="E
+Nulable:True 
+ID: 5
+PP: set()
+UP: set()
+ FP: set()"]
+	2950291240912 [label=suma]
+	2950291240976 -> 2950291240912
+	2950291240912 [label="suma
+Nulable:False 
+ID: 1
+PP: {1}
+UP: {1}
+ FP: set()"]
+	2950291241040 [label=resta]
+	2950291241104 -> 2950291241040
+	2950291241040 [label="resta
+Nulable:False 
+ID: 2
+PP: {2}
+UP: {2}
+ FP: set()"]
+	2950291241168 [label=multi]
+	2950291241232 -> 2950291241168
+	2950291241168 [label="multi
+Nulable:False 
+ID: 3
+PP: {3}
+UP: {3}
+ FP: set()"]
+	2950291241296 [label=div]
+	2950291241360 -> 2950291241296
+	2950291241296 [label="div
+Nulable:False 
+ID: 4
+PP: {4}
+UP: {4}
+ FP: set()"]
+	2950291241424 [label=lparen]
+	2950291241488 -> 2950291241424
+	2950291241424 [label="lparen
 Nulable:False 
 ID: 5
 PP: {5}
 UP: {5}
- FP: {7}"]
-	1485588018896 [label=rparen]
-	1485588018960 -> 1485588018896
-	1485588018896 [label="rparen
+ FP: set()"]
+	2950291241552 [label=rparen]
+	2950291241616 -> 2950291241552
+	2950291241552 [label="rparen
 Nulable:False 
 ID: 6
 PP: {6}
 UP: {6}
- FP: {7}"]
-	1485588019024 [label="#"]
-	1485588019088 -> 1485588019024
-	1485588019024 [label="#
-Nulable:False 
-ID: 7
-PP: {7}
-UP: {7}
  FP: set()"]
 }

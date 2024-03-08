@@ -198,7 +198,7 @@ def preprocess_regex_dict(regex_dict, symbols_keys, operandos):
 
 def reemplazar_caracteres(expresion):
     expresion = expresion.replace("'\\t'", "'\t'").replace("'\\n'", "'\n'").replace("'\\s'", "'\s'")
-    caracteres_reemplazar = {'\t': '替', '\n': '换', '\s': '空'}
+    caracteres_reemplazar = {'\t': 'Tab', '\n': 'Enter', '\s': 'Espacio'}
 
     if expresion.find("['+' '-']") != -1:
         expresion = expresion.replace("['+' '-']", "[suma resta]")
@@ -213,10 +213,14 @@ def reemplazar_caracteres(expresion):
 
     for caracter, special in caracteres_reemplazar.items():
         expresion = expresion.replace(caracter, special)
+        #eliminar las comillas 
+        expresion = expresion.replace("'", "")
+
+        
     return expresion
 
 def revertir_caracteres(expresion):
-    caracteres_revertir = {'替': 't', '换': 'n', '空': 's', '加': '+', '点': '-', '苦': '_'}
+    caracteres_revertir = {'Tab': 't', 'Enter': 'n', 'Espacio': 's', 'suma': '+', 'resta': '-', '苦': '_'}
     for special, caracter in caracteres_revertir.items():
         expresion = expresion.replace(special, caracter)
     return expresion
