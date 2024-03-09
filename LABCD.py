@@ -29,6 +29,13 @@ operandos = [
 
 archivo = "slr-4.yal"
 
+exist_error, message = manejar_errores_yalex(archivo, operandos)
+
+if exist_error:
+    print(message)
+    exit()
+
+
 symbols = read_var(archivo)
 read_regdef(archivo)
 
