@@ -27,3 +27,13 @@ def sintaxisRegex(symbols):
             print('Error: El token', key, 'contiene un operador')
             return False
     return True
+
+def verificarErrores(symbols, operandos, filename):
+    if not verPalabrasReservadas(symbols, operandos):
+        return False
+    if not ExistRules(filename):
+        print('Error: No se encontraron reglas')
+        return False
+    if not sintaxisRegex(symbols):
+        return False
+    return True

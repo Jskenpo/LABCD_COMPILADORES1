@@ -3,6 +3,7 @@ from  prepare import *
 from AST import *
 from Automatas import *
 from Lectura import *
+from Errores import *
 
 operandos = [
     'multi',
@@ -27,11 +28,16 @@ operandos = [
 
 # Llamar a las funciones para leer los datos
 
-archivo = "slr-1.yal"
-
-
+archivo = "slr-4.yal"
 
 symbols = read_var(archivo)
+
+errores = verificarErrores(symbols, operandos, archivo)
+
+if not errores:
+    exit()
+
+
 read_regdef(archivo)
 
 print(symbols)

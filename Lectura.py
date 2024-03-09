@@ -5,16 +5,22 @@ regular_elements = []
 
 def read_var(filename):
     with open(filename) as f:
-        for line in f:
-            line = line.strip()
+        try:
             
-            # Eliminar comentarios
-            line = re.sub(r'\(\*.*?\*\)', '', line)
+            for line in f:
+                line = line.strip()
+                
+                # Eliminar comentarios
+                line = re.sub(r'\(\*.*?\*\)', '', line)
+                
+                # Analizar variables 
+                if line.startswith("let"):
+                    name, value = re.search(r"let\s+(\w+)\s*=\s*(.*)", line).groups()
+                    symbols[name] = value.strip()
+        except:
+            print('Error: No se encontraron variables o variable mal escrita en el archivo de entrada')
+            exit()
             
-            # Analizar variables 
-            if line.startswith("let"):
-                name, value = re.search(r"let\s+(\w+)\s*=\s*(.*)", line).groups()
-                symbols[name] = value.strip()
 
     return symbols
 
