@@ -182,7 +182,6 @@ def expandir_extensiones(expresion, operandos):
     
     return expresion
 
-
 def preprocess_regex_dict(regex_dict, symbols_keys, operandos):
     keys = list(regex_dict.keys())
     for key in keys:

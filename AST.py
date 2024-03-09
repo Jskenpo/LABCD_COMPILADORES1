@@ -82,7 +82,6 @@ def eliminar_null(node):
     eliminar_null(node.izquierda)
     eliminar_null(node.derecha)
 
-
 def dibujar_AST(nodo, dot=None):
     if dot is None:
         dot = Digraph()
@@ -243,8 +242,6 @@ def calcular_followpos(nodo, ast ):
 
     calcular_followpos(nodo.izquierda, ast)
     calcular_followpos(nodo.derecha, ast)
-
-
 
 def obtener_nodo_por_id(nodo, id):
     if nodo is None:

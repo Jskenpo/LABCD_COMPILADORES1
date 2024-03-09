@@ -27,13 +27,8 @@ operandos = [
 
 # Llamar a las funciones para leer los datos
 
-archivo = "slr-4.yal"
+archivo = "slr-1.yal"
 
-exist_error, message = manejar_errores_yalex(archivo, operandos)
-
-if exist_error:
-    print(message)
-    exit()
 
 
 symbols = read_var(archivo)
@@ -83,8 +78,6 @@ print(processed_symbols)
 ast = construir_AST(postfix, processed_symbols)
 ast = ast_final(ast)
 calcular_nulabilidad(ast)
-
-
 obtener_primera_pos(ast)
 obtener_ultima_pos(ast)
 calcular_followpos(ast,ast)
