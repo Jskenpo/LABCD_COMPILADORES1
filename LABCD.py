@@ -28,7 +28,7 @@ operandos = [
 
 # Llamar a las funciones para leer los datos
 
-archivo = "slr-4.yal"
+archivo = "slr-1.yal"
 
 symbols = read_var(archivo)
 
@@ -41,6 +41,10 @@ if not errores:
 read_regdef(archivo)
 
 print(symbols)
+
+print('elementos regulares')
+print(regular_elements)
+print ('elementos regulares')
 
 regular_dict = convert_to_dictionary(regular_elements)
 
@@ -91,3 +95,24 @@ calcular_followpos(ast,ast)
 
 dot = dibujar_AST(ast)
 dot.render('ast', format='png', view=True)
+
+#obtener alfabeto de ast 
+alfabeto = obtener_alfabeto(ast)
+
+print('alfabeto')
+print(alfabeto)
+
+
+#convertir a afd directo 
+
+afd_directo = direct_afd(ast,alfabeto)
+
+print('afd directo')
+imprimir_afd(afd_directo)
+
+#graficar afd directo
+dot = graficar_direct_afd(afd_directo)
+dot.render('afd_directo', format='png', view=True)
+
+
+

@@ -1,7 +1,7 @@
 import re 
 
 symbols = {}
-regular_elements = []
+regular_elements=[]
 
 def read_var(filename):
     with open(filename) as f:
@@ -23,7 +23,6 @@ def read_var(filename):
             
 
     return symbols
-
 
 def read_regdef(filename):
     with open(filename) as f:
@@ -61,8 +60,9 @@ def convert_to_dictionary(elements):
     # Creamos un diccionario vacío
     regular_dict = {}
     
-    # Asignamos 'ws' con un valor de 0
-    regular_dict['ws'] = 0
+    # Si el primer elemento no tiene un '{', entonces se le asigna 0 en el diccionario
+    if not elements[0].__contains__('{'):
+        regular_dict[elements[0]] = 0
     
     # Iteramos sobre los elementos de la definición regular
     for element in elements:

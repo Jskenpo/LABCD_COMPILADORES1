@@ -19,7 +19,6 @@ class NodoAST:
     def __lt__(self,other):
         return self.id < other.id
         
-
 identificador_global = 1
 
 def construir_AST(exp_postfix, definitions):
@@ -30,10 +29,7 @@ def construir_AST(exp_postfix, definitions):
     for token in exp_postfix:
         if token in definitions:  # Verificar si el token es una definición previa
             # Expandir la definición
-            nodo_definicion = construir_AST(definitions[token], definitions)
-            # Usar la definición como etiqueta del nodo
-            nodo = NodoAST(token, 'null')
-            nodo.izquierda = nodo_definicion
+            nodo = construir_AST(definitions[token], definitions)
         elif token in ['.', '|', '*', '+', '?']:
             nodo = NodoAST(token, 'null')
         else:
@@ -257,3 +253,25 @@ def obtener_nodo_por_id(nodo, id):
     nodo_derecha = obtener_nodo_por_id(nodo.derecha, id)
     if nodo_derecha is not None:
         return nodo_derecha
+
+def obtener_alfabeto(nodo):
+    # Definir los operadores
+    operadores = ['.', '|', '*', '+', '?']
+
+    # Usar un conjunto para almacenar el alfabeto (para evitar duplicados)
+    alfabeto = set()
+
+    # Definir una función recursiva para recorrer el árbol
+    def recorrer(nodo):
+        if nodo is None:
+            return
+        if nodo.valor not in operadores:
+            alfabeto.add(nodo.valor)
+        recorrer(nodo.izquierda)
+        recorrer(nodo.derecha)
+
+    # Iniciar el recorrido del árbol
+    recorrer(nodo)
+
+    # Devolver el alfabeto como una lista
+    return list(alfabeto)

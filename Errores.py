@@ -10,7 +10,6 @@ def verPalabrasReservadas (symbols, operandos):
             return False
     return True
 
-
 def ExistRules(filename):
     with open(filename) as f:
         for line in f:
@@ -18,7 +17,6 @@ def ExistRules(filename):
             if line.startswith("rule"):
                 return True
     return False
-
 
 def sintaxisRegex(symbols):
     operands =['+', '-', '*', '?', '|', '(', ')', '[', ']', '{', '}', ' ', '\t', '\n', '\s']
