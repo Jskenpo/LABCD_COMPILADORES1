@@ -14,8 +14,8 @@ let number = dogits(dogits)?(E['+' '-']?dogits)?
 
 rule tokens = 
     ws
-  | id        { return ID }               (* Cambie por una acción válida, que devuelva el token *)
-  | number    { return NUMBER }
+  | number        { return NUMBER }               (* Cambie por una acción válida, que devuelva el token *)
+  | id    { return ID }
   | ';'       { return SEMICOLON }
   | ':'      { return ASSIGNOP }
   | '<'       { return LT }

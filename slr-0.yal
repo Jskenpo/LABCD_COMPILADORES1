@@ -9,6 +9,6 @@ let digit = ['0'-'2']
 let id = letter(letter|digit)*
 
 rule tokens = 
-  lparen        { print('hola mundo')}
+  id        { print('hola mundo')}
 
 (* Introducir cualquier trailer aqui *)

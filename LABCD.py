@@ -29,7 +29,7 @@ operandos = [
 
 # Llamar a las funciones para leer los datos
 
-archivo = "slr-4.yal"
+archivo = "slr-0.yal"
 
 symbols = read_var(archivo)
 
@@ -107,8 +107,8 @@ obtener_ultima_pos(ast)
 calcular_followpos(ast,ast)
 
 
-#dot = dibujar_AST(ast)
-#dot.render('ast', format='png', view=True)
+dot = dibujar_AST(ast)
+dot.render('ast', format='png', view=True)
 
 #obtener alfabeto de ast 
 alfabeto = obtener_alfabeto(ast)
@@ -123,8 +123,11 @@ afd_directo = direct_afd(ast,alfabeto)
 
 
 #graficar afd directo
-#dot = graficar_direct_afd(afd_directo)
-#dot.render('afd_directo', format='png', view=True)
+dot = graficar_direct_afd(afd_directo)
+dot.render('afd_directo', format='png', view=True)
+
+#imprimir afd directo
+imprimir_afd(afd_directo)
 
 ast_dict = get_ast_by_regdefDict(dict_regdef, processed_symbols)
 
@@ -132,6 +135,6 @@ ast_dict = get_ast_by_regdefDict(dict_regdef, processed_symbols)
 
 afd_dict = get_afd_byASTDict(ast_dict)
 
-leer_tokens(afd_directo, afd_dict, regular_dict)
+#leer_tokens(afd_directo, afd_dict, regular_dict)
 
 #graph_DFA_by_DFADict(afd_dict)

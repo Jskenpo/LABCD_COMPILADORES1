@@ -62,21 +62,6 @@ def ast_final(ast):
 
     return nodo_concatenacion
 
-def eliminar_null(node):
-    if node is None:
-        return
-
-    # Eliminar 'null' de los conjuntos PP, UP y FP si está presente
-    if 'null' in node.PrimeraPos:
-        node.PrimeraPos.remove('null')
-    if 'null' in node.UltimaPos:
-        node.UltimaPos.remove('null')
-    if 'null' in node.follows:
-        node.follows.remove('null')
-    
-    # Llamar recursivamente a la función para los nodos hijos
-    eliminar_null(node.izquierda)
-    eliminar_null(node.derecha)
 
 def dibujar_AST(nodo, dot=None):
     if dot is None:
@@ -108,6 +93,21 @@ def calcular_nulabilidad(nodo):
         nodo.nulable = nodo.izquierda.nulable or nodo.derecha.nulable
     elif nodo.valor == '*':
         nodo.nulable = True
+
+def obtener_nulables(nodo, nulables=None):
+    if nulables is None:
+        nulables = []
+
+    if nodo is None:
+        return
+
+    obtener_nulables(nodo.izquierda, nulables)
+    obtener_nulables(nodo.derecha, nulables)
+
+    if nodo.nulable:
+        nulables.append(nodo)
+
+    return nulables
 
 def obtener_nulables(nodo, nulables=None):
     if nulables is None:
@@ -157,18 +157,26 @@ def obtener_primera_pos(nodo):
             primera_pos.add(nodo.id)
             nodos_PP.add(nodo)
 
-    primera_pos_new, nodos_PP_new = obtener_primera_pos(nodo.izquierda)
-    if primera_pos_new is not None and nodos_PP_new is not None:
-        primera_pos |= primera_pos_new
-        nodos_PP |= nodos_PP_new
+    primera_pos_izq, nodos_PP_izq = obtener_primera_pos(nodo.izquierda)
+    if primera_pos_izq is not None and nodos_PP_izq is not None:
+        primera_pos |= primera_pos_izq
+        nodos_PP |= nodos_PP_izq
 
-    primera_pos_new, nodos_PP_new = obtener_primera_pos(nodo.derecha)
-    if primera_pos_new is not None and nodos_PP_new is not None:
-        primera_pos |= primera_pos_new
-        nodos_PP |= nodos_PP_new
+    primera_pos_der, nodos_PP_der= obtener_primera_pos(nodo.derecha)
+    if primera_pos_der is not None and nodos_PP_der is not None:
+        primera_pos |= primera_pos_der
+        nodos_PP |= nodos_PP_der
+
+    
 
     nodo.PrimeraPos = primera_pos
     nodo.NodosPP = nodos_PP
+
+    #si el nodo es concatenacion y el nodo izquierdo no es nulable, eliminar la primera posicion del nodo derecho 
+    if nodo.valor == '.':
+        if not nodo.izquierda.nulable:
+            nodo.PrimeraPos -= nodo.derecha.PrimeraPos
+            nodo.NodosPP -= nodo.derecha.NodosPP
 
     return primera_pos, nodos_PP
 
@@ -216,6 +224,12 @@ def obtener_ultima_pos(nodo):
 
     nodo.UltimaPos = ultima_pos
     nodo.NodosUP = nodos_UP
+
+    #si el nodo es concatenacion y el nodo derecho no es nulable, eliminar la ultima posicion del nodo izquierdo
+    if nodo.valor == '.':
+        if not nodo.derecha.nulable:
+            nodo.UltimaPos -= nodo.izquierda.UltimaPos
+            nodo.NodosUP -= nodo.izquierda.NodosUP
 
     return ultima_pos, nodos_UP
 
@@ -275,3 +289,4 @@ def obtener_alfabeto(nodo):
 
     # Devolver el alfabeto como una lista
     return list(alfabeto)
+
