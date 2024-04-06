@@ -4,6 +4,7 @@ from AST import *
 from Automatas import *
 from Lectura import *
 from Errores import *
+from Generator import *
 
 operandos = [
     'multi',
@@ -28,7 +29,7 @@ operandos = [
 
 # Llamar a las funciones para leer los datos
 
-archivo = "slr-1.yal"
+archivo = "slr-4.yal"
 
 symbols = read_var(archivo)
 
@@ -121,23 +122,16 @@ print(alfabeto)
 afd_directo = direct_afd(ast,alfabeto)
 
 
-print('afd directo')
-imprimir_afd(afd_directo)
-
 #graficar afd directo
 #dot = graficar_direct_afd(afd_directo)
 #dot.render('afd_directo', format='png', view=True)
 
 ast_dict = get_ast_by_regdefDict(dict_regdef, processed_symbols)
 
-print ('ast dict')
-print(ast_dict)
+
 
 afd_dict = get_afd_byASTDict(ast_dict)
 
-print('afd dict')
-print(afd_dict)
+leer_tokens(afd_directo, afd_dict, regular_dict)
 
-
-
-
+#graph_DFA_by_DFADict(afd_dict)

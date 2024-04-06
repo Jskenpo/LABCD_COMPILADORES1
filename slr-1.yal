@@ -10,7 +10,7 @@ let id = letter(letter|digit)*
 
 rule tokens = 
     ws
-  | id        { print('hola mundo')}               (* Cambie por una acción válida, que devuelva el token *)
+  | id        { print('hola mundo') }               (* Cambie por una acción válida, que devuelva el token *)
   | 'suma'       { return PLUS }
   | 'multi'       { return TIMES }
   | 'lparen'       { return LPAREN }

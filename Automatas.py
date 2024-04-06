@@ -149,32 +149,36 @@ def imprimir_afd(afd):
     for estado in afd.accept:
         print(estado)
 
-def simular_afd_directo(afd, cadena, afd_dict):
-    estado_actual = afd.inicial
+def simular_afd_directo(afd_principal, afd_dict, cadena):
+    estado_actual = afd_principal.inicial
     
+    # Pasar la cadena por el AFD principal
     for simbolo in cadena:
-        if estado_actual not in afd.transitions or simbolo not in afd.transitions[estado_actual]:
+        if estado_actual not in afd_principal.transitions or simbolo not in afd_principal.transitions[estado_actual]:
             return False, f"Error: El símbolo '{simbolo}' no es válido en el estado {estado_actual}"
-        estado_actual = afd.transitions[estado_actual][simbolo]
+        estado_actual = afd_principal.transitions[estado_actual][simbolo]
     
-    # Buscar el token reconocido mediantee el diccionario de afds pasando uno por uno hasta cuando llegue al token
-    for key in afd_dict:
-        if afd_dict[key].inicial == estado_actual:
-            return True, key
-    
-    return False, "La cadena no fue aceptada por el autómata."
+    # Si el AFD principal alcanza un estado de aceptación, iterar sobre el diccionario de AFDs
+    if estado_actual in afd_principal.accept:
+        for token, afd in afd_dict.items():
+            estado_actual_afd = afd.inicial
+            for simbolo in cadena:
+                if estado_actual_afd not in afd.transitions or simbolo not in afd.transitions[estado_actual_afd]:
+                    break
+                estado_actual_afd = afd.transitions[estado_actual_afd][simbolo]
+            else:
+                if estado_actual_afd in afd.accept:
+                    return True, token
 
-def simulacion_direct_afd(afd, expresion_regular):
-    estado_actual = afd.inicial
-    for simbolo in expresion_regular:
-        if estado_actual not in afd.transitions or simbolo not in afd.transitions[estado_actual]:
-            return False
-        estado_actual = afd.transitions[estado_actual][simbolo]
-    return estado_actual in afd.accept
+    return False, "La cadena no fue aceptada por ningún autómata."
+
+
 
 def graph_DFA_by_DFADict (dfa_dict):
+    contador = 1
     for key in dfa_dict:
         dfa = dfa_dict[key]
         dot = graficar_direct_afd(dfa)
-        dot.render(f'afd_directo_{key}', format='png', view=True)
+        dot.render(f'afd_directo_{contador}', format='png', view=True)
+        contador += 1
 

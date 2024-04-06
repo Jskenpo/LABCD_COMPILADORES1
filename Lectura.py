@@ -98,3 +98,8 @@ def regdefKeys (dictionary):
     keys = list(dictionary.keys())
     return keys
 
+def convert_input_toList(input):
+    #separar la cadena por espacios 
+    input = input.split()
+    return input
+    
