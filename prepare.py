@@ -1,5 +1,7 @@
 
 import re 
+from AST import * 
+from Automatas import *
 
 def convert_regex_to_list(regex, symbols_keys, operandos):
     regex_list = []
@@ -223,3 +225,39 @@ def revertir_caracteres(expresion):
     for special, caracter in caracteres_revertir.items():
         expresion = expresion.replace(special, caracter)
     return expresion
+
+def get_regex_byregdef(regdef, regex_dict):
+    #hacer un diccionario que incluya como keys los tokens de la definicion regular y como value su regex, en caso de que un token no tenga una regex asociada, debe de incluirse a si misma como regex 
+    regex_byregdef = {}
+    for key in regdef:
+        if key in regex_dict:
+            regex_byregdef[key] = regex_dict[key]
+        else:
+            #concatenarlo como una lista de un solo elemento
+            regex_byregdef[key] = [key]
+    return regex_byregdef
+
+def get_ast_by_regdefDict (regdef_dict, definitions):
+    ast_byregdef = {}
+    for key in regdef_dict:
+        ast  = construir_AST(regdef_dict[key], definitions)
+        ast = ast_final(ast)
+        calcular_nulabilidad(ast)
+        obtener_primera_pos(ast)
+        obtener_ultima_pos(ast)
+        calcular_followpos(ast,ast)
+        ast_byregdef[key] = ast
+
+    return ast_byregdef
+
+def get_afd_byASTDict(ast_dict):
+    afd_byAST = {}
+    for key in ast_dict:
+        ast = ast_dict[key]
+        alfabeto = obtener_alfabeto(ast)
+        afd = direct_afd(ast, alfabeto)
+        afd_byAST[key] = afd
+
+    return afd_byAST
+        
+            

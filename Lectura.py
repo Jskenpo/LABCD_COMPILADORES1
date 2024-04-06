@@ -94,3 +94,7 @@ def regdef(dictionary):
 
     return regex_pattern
 
+def regdefKeys (dictionary):
+    keys = list(dictionary.keys())
+    return keys
+

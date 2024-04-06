@@ -1,6 +1,6 @@
 
 # Clase para construir el árbol de sintaxis abstracta
-from graphviz import Digraph
+from graphviz import Digraph 
 
 class NodoAST:
     def __init__(self, valor, identificador ):

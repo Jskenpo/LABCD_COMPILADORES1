@@ -40,10 +40,9 @@ if not errores:
 
 read_regdef(archivo)
 
+print('simbolos')
 print(symbols)
 
-print('elementos regulares')
-print(regular_elements)
 print ('elementos regulares')
 
 regular_dict = convert_to_dictionary(regular_elements)
@@ -51,6 +50,14 @@ regular_dict = convert_to_dictionary(regular_elements)
 print(regular_dict)
 
 definicion_regular = regdef(regular_dict)
+tokens = regdefKeys(regular_dict)
+
+print('tokens')
+print(tokens)
+
+
+
+print('definicion regular')
 print(definicion_regular)
 
 symbols_keys = list(symbols.keys())
@@ -85,6 +92,12 @@ processed_symbols=preprocess_regex_dict(symbols, symbols_keys, operandos)
 print('Simbolos procesados')
 print(processed_symbols)
 
+
+#expresiones regulares de los tokens
+dict_regdef = get_regex_byregdef(tokens, processed_symbols)
+print('expresiones regulares de los tokens')
+print(dict_regdef)
+
 ast = construir_AST(postfix, processed_symbols)
 ast = ast_final(ast)
 calcular_nulabilidad(ast)
@@ -93,8 +106,8 @@ obtener_ultima_pos(ast)
 calcular_followpos(ast,ast)
 
 
-dot = dibujar_AST(ast)
-dot.render('ast', format='png', view=True)
+#dot = dibujar_AST(ast)
+#dot.render('ast', format='png', view=True)
 
 #obtener alfabeto de ast 
 alfabeto = obtener_alfabeto(ast)
@@ -107,12 +120,24 @@ print(alfabeto)
 
 afd_directo = direct_afd(ast,alfabeto)
 
+
 print('afd directo')
 imprimir_afd(afd_directo)
 
 #graficar afd directo
-dot = graficar_direct_afd(afd_directo)
-dot.render('afd_directo', format='png', view=True)
+#dot = graficar_direct_afd(afd_directo)
+#dot.render('afd_directo', format='png', view=True)
+
+ast_dict = get_ast_by_regdefDict(dict_regdef, processed_symbols)
+
+print ('ast dict')
+print(ast_dict)
+
+afd_dict = get_afd_byASTDict(ast_dict)
+
+print('afd dict')
+print(afd_dict)
+
 
 
 

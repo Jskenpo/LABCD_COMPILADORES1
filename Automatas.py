@@ -1,27 +1,10 @@
 import graphviz
+from graphviz import Digraph
 class estado:
     label = None
     transicion1 = None 
     transicion2 = None 
     id = None
-
-
-def seguimiento(estado, visitados=None):
-    if visitados is None:
-        visitados = set()
-
-    estados = set()
-    estados.add(estado)
-
-    if estado.label is None:
-        if estado.transicion1 is not None and estado.transicion1 not in visitados:
-            visitados.add(estado.transicion1)
-            estados |= seguimiento(estado.transicion1, visitados)
-        if estado.transicion2 is not None and estado.transicion2 not in visitados:
-            visitados.add(estado.transicion2)
-            estados |= seguimiento(estado.transicion2, visitados)
-
-    return estados
 
 class AFD:
     def __init__(self):
@@ -166,14 +149,32 @@ def imprimir_afd(afd):
     for estado in afd.accept:
         print(estado)
 
+def simular_afd_directo(afd, cadena, afd_dict):
+    estado_actual = afd.inicial
+    
+    for simbolo in cadena:
+        if estado_actual not in afd.transitions or simbolo not in afd.transitions[estado_actual]:
+            return False, f"Error: El símbolo '{simbolo}' no es válido en el estado {estado_actual}"
+        estado_actual = afd.transitions[estado_actual][simbolo]
+    
+    # Buscar el token reconocido mediantee el diccionario de afds pasando uno por uno hasta cuando llegue al token
+    for key in afd_dict:
+        if afd_dict[key].inicial == estado_actual:
+            return True, key
+    
+    return False, "La cadena no fue aceptada por el autómata."
 
-def simulacion_direct_afd(afd, w):
-    actual = afd.inicial
-
-    for char in w:
-        if actual not in afd.transitions or char not in afd.transitions[actual]:
+def simulacion_direct_afd(afd, expresion_regular):
+    estado_actual = afd.inicial
+    for simbolo in expresion_regular:
+        if estado_actual not in afd.transitions or simbolo not in afd.transitions[estado_actual]:
             return False
-        actual = afd.transitions[actual][char]
+        estado_actual = afd.transitions[estado_actual][simbolo]
+    return estado_actual in afd.accept
 
-    return actual in afd.accept
+def graph_DFA_by_DFADict (dfa_dict):
+    for key in dfa_dict:
+        dfa = dfa_dict[key]
+        dot = graficar_direct_afd(dfa)
+        dot.render(f'afd_directo_{key}', format='png', view=True)
 

@@ -1,0 +1,14 @@
+(* Lexer para Gramática No. 1 - Expresiones aritméticas simples para variables *)
+
+(* Introducir cualquier header aqui *)
+
+let delim = ['\s' '\t' '\n']
+let ws = delim+
+let letter = ['A'-'B' 'a'-'b']
+let digit = ['0'-'2']
+let id = letter(letter|digit)*
+
+rule tokens = 
+  lparen        { print('hola mundo')}
+
+(* Introducir cualquier trailer aqui *)
