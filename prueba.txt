@@ -1,6 +1,1 @@
-Tab Tab 
-Enter Enter
-a 0 A
-suma
-multi
-0 1 0 1
+Tab Tab  a0b Enter suma 0101
