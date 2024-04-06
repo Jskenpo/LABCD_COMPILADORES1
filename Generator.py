@@ -25,8 +25,6 @@ def reconocedor_de_tokens( afd_directo, afd_dict, tokens_dict, token_actions):
         else:
             print(f"La cadena '{valor}' no fue aceptada por ningún autómata.")
     
-            
-
 
 def leer_tokens(operandos):
     archivo = input('Ingrese el nombre del archivo de entrada: ')

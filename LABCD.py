@@ -27,7 +27,7 @@ operandos = [
 ]
 
 
-# Llamar a las funciones para leer los datos
+# ---------------------LECTURA DE DATOS ----------------------------
 
 archivo = "slr-4.yal"
 
@@ -38,67 +38,34 @@ errores = verificarErrores(symbols, operandos, archivo)
 if not errores:
     exit()
 
-
 read_regdef(archivo)
-
-print('simbolos')
-print(symbols)
-
-print ('elementos regulares')
 
 regular_dict = convert_to_dictionary(regular_elements)
 
-print(regular_dict)
-
 definicion_regular = regdef(regular_dict)
+
 tokens = regdefKeys(regular_dict)
-
-print('tokens')
-print(tokens)
-
-
-
-print('definicion regular')
-print(definicion_regular)
 
 symbols_keys = list(symbols.keys())
 
-print('expresiones regulares de los tokens')
-print(symbols_keys)
+#---------------------PREPROCESAMIENTO DE DATOS ----------------------------
 
 new_regex = convertFirst(definicion_regular)
 new_regex = convert_regex_to_list(new_regex, symbols_keys, operandos)
 
-print('expresion regular convertida a lista')
-print(new_regex)
-
-
-
 infix,alfabeto = convertir_expresion(new_regex,symbols_keys,operandos)
-
-print('La expresión regular en notación infix es:', infix)
 
 explicit = implicit_to_explicit(infix,symbols_keys, operandos)
 
-print('La expresión regular en notación explicit es:', explicit)
-
 postfix = infix_postfix(explicit)
-
-print('La expresión regular en notación postfix es:', postfix)
-
-##preprocesar simbolos 
 
 processed_symbols=preprocess_regex_dict(symbols, symbols_keys, operandos)
 
-print('Simbolos procesados')
-print(processed_symbols)
-
-
-#expresiones regulares de los tokens
 dict_regdef = get_regex_byregdef(tokens, processed_symbols)
-print('expresiones regulares de los tokens')
-print(dict_regdef)
 
+
+
+#---------------------CONSTRUCCION DE AST ----------------------------
 ast = construir_AST(postfix, processed_symbols)
 ast = ast_final(ast)
 calcular_nulabilidad(ast)
@@ -113,11 +80,8 @@ calcular_followpos(ast,ast)
 #obtener alfabeto de ast 
 alfabeto = obtener_alfabeto(ast)
 
-print('alfabeto')
-print(alfabeto)
+#---------------------CONSTRUCCION DE AFD ----------------------------
 
-
-#convertir a afd directo 
 
 afd_directo = direct_afd(ast,alfabeto)
 
@@ -129,6 +93,8 @@ afd_directo = direct_afd(ast,alfabeto)
 #imprimir afd directo
 #imprimir_afd(afd_directo)
 
+#---------------------CONSTRUCCION DE AFD POR TOKENS ----------------------------
+
 ast_dict = get_ast_by_regdefDict(dict_regdef, processed_symbols)
 
 
@@ -137,7 +103,7 @@ afd_dict = get_afd_byASTDict(ast_dict)
 
 tokens_dict=leer_tokens(operandos)
 
-print(tokens_dict)
+#---------------------RECONOCIMIENTO DE TOKENS ----------------------------
 
 reconocedor_de_tokens(afd_directo, afd_dict, tokens_dict, regular_dict)
 
